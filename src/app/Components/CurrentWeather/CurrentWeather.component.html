@@ -1,0 +1,54 @@
+<div class="page-header">
+    <h1> Weather App </h1>
+</div>
+<div class="panel">
+    <label style="width: 50%">
+        <!--Enter city name <input type="text" [(ngModel)]="city"><br>-->
+        <input placeholder="Find your city"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="off"
+               type="text"
+               class="form-control"
+               #search>
+    </label>
+    <button class="btn btn-primary" (click)="getWeather(city)">Get weather data</button>
+</div>
+<div class="panel">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td><strong>City name - </strong></td>
+            <td>{{ weather.name || '-' }}</td>
+        </tr>
+        <tr>
+            <td><strong>Temp min - </strong></td>
+            <td>{{ weather.main.temp_min }}</td>
+        </tr>
+        <tr>
+            <td><strong>Temp max -</strong></td>
+            <td>{{ weather.main.temp_max }}</td>
+        </tr>
+        <tr>
+            <td><strong>Temp - </strong></td>
+            <td>{{ weather.main.temp }}</td>
+        </tr>
+        <tr>
+            <td><strong>Wind - </strong></td>
+            <td>km/hb{{ weather.wind.speed }}</td>
+        </tr>
+        <tr>
+            <td><strong>Humidity - </strong></td>
+            <td>{{ weather.main.humidity }}%</td>
+        </tr>
+        <tr>
+            <td><strong>Description - </strong></td>
+            <td>
+                <div *ngFor="let weather of weather.weather">
+                    {{ weather.description }} - {{ weather.icon }}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
