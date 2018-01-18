@@ -23,7 +23,6 @@ export class CurrentWeatherComponent implements OnInit  {
     ){ }
 
     getWeather() {
-       console.log(this.city);
         this.httpService.getData().subscribe((data:Weather) => this.weather = data );
     }
 
@@ -52,7 +51,7 @@ export class CurrentWeatherComponent implements OnInit  {
             },10);
             console.log("Browser doesn't support Geolocation");
         }
-        // this.getWeather();
+
         this.googleAutocompleteService.init(this.searchElement);
     }
 }

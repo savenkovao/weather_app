@@ -7,6 +7,7 @@ import { AppComponent }   from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
 import { CurrentWeatherComponent } from "./Components/CurrentWeather/CurrentWeather.component";
 import { AgmCoreModule, MapsAPILoader } from "@agm/core";
+import { ForecastComponent } from "./Components/Forecast/Forecast.component";
 
 @NgModule({
     imports:      [
@@ -21,7 +22,8 @@ import { AgmCoreModule, MapsAPILoader } from "@agm/core";
     ],
     declarations: [
         AppComponent,
-        CurrentWeatherComponent
+        CurrentWeatherComponent,
+        ForecastComponent
     ],
     bootstrap:    [ AppComponent ]
 })
