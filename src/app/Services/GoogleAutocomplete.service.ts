@@ -25,6 +25,8 @@ export class GoogleAutocompleteService {
                     console.log(place);
 
                     if(place.geometry !== undefined || place.geometry !== null) {
+                        console.log(searchElement.nativeElement);
+                        searchElement.nativeElement.value = place.formatted_address;
                         APP_CONFIG.position = {
                             lat: place.geometry.location.lat(),
                             lng: place.geometry.location.lng()

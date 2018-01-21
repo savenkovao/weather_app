@@ -5,9 +5,11 @@ import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent }   from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
-import { CurrentWeatherComponent } from "./Components/CurrentWeather/CurrentWeather.component";
+import { CurrentWeatherComponent } from "./Components/WeatherContainer/Components/CurrentWeather/CurrentWeather.component";
 import { AgmCoreModule, MapsAPILoader } from "@agm/core";
-import { ForecastComponent } from "./Components/Forecast/Forecast.component";
+import { ForecastComponent } from "./Components/WeatherContainer/Components/Forecast/Forecast.component";
+import {WeatherContainerComponent} from "./Components/WeatherContainer/Components/WeatherContainer.component";
+import {CitySearchComponent} from "./Components/WeatherContainer/Components/CitySearch/CitySearch.component";
 
 @NgModule({
     imports:      [
@@ -22,6 +24,8 @@ import { ForecastComponent } from "./Components/Forecast/Forecast.component";
     ],
     declarations: [
         AppComponent,
+        CitySearchComponent,
+        WeatherContainerComponent,
         CurrentWeatherComponent,
         ForecastComponent
     ],
