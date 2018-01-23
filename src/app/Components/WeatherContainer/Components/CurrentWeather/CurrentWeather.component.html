@@ -1,52 +1,42 @@
+<div class="current-weather">
 
-<!--<div class="panel">-->
-    <!--<label style="width: 50%">-->
-        <!--&lt;!&ndash;Enter city name <input type="text" [(ngModel)]="city"><br>&ndash;&gt;-->
-        <!--<input placeholder="Find your city"-->
-               <!--autocorrect="off"-->
-               <!--autocapitalize="off"-->
-               <!--spellcheck="off"-->
-               <!--type="text"-->
-               <!--class="form-control"-->
-               <!--#search>-->
-    <!--</label>-->
-    <!--<button class="btn btn-primary" (click)="getWeather(city)">Get weather data</button>-->
-<!--</div>-->
-<div class="panel">
-    <table class="table table-striped">
-        <tbody>
-        <tr>
-            <td><strong>City name - </strong></td>
-            <td>{{ weather.name || '-' }}</td>
-        </tr>
-        <tr>
-            <td><strong>Temp min - </strong></td>
-            <td>{{ weather.main.temp_min }}</td>
-        </tr>
-        <tr>
-            <td><strong>Temp max -</strong></td>
-            <td>{{ weather.main.temp_max }}</td>
-        </tr>
-        <tr>
-            <td><strong>Temp - </strong></td>
-            <td>{{ weather.main.temp }}</td>
-        </tr>
-        <tr>
-            <td><strong>Wind - </strong></td>
-            <td>km/hb{{ weather.wind.speed }}</td>
-        </tr>
-        <tr>
-            <td><strong>Humidity - </strong></td>
-            <td>{{ weather.main.humidity }}%</td>
-        </tr>
-        <tr>
-            <td><strong>Description - </strong></td>
-            <td>
-                <div *ngFor="let weather of weather.weather">
-                    {{ weather.description }} - {{ weather.icon }}
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="current-weather__left-col">
+        <p class="current-weather__week-day">{{ currentDate | date: 'EEEE' }}</p>
+        <p class="current-weather__date">{{ currentDate | date: 'M/d/yy'}}</p>
+        <p class="current-weather__wind">
+            Wind {{ weather.wind.speed | number: '1.0-1' }}km/h
+        </p>
+        <p class="current-weather__humid">
+            <i class="fa fa-tint fa-lg" aria-hidden="true"></i>
+            {{ weather.main.humidity | number: '1.0-1' }}%
+        </p>
+    </div>
+
+    <div class="current-weather__center-col">
+        <div class="current-weather__weather-icon">
+            <!--{{ weather.icon }}-->
+            <!--<i class="wi wi-night-sleet"></i>-->
+            <img src="http://openweathermap.org/img/w/10d.png" alt="">
+        </div>
+        <div class="current-weather__weather-descr">
+            <span *ngFor="let weather of weather.weather" >
+                {{ weather.description }}
+            </span>
+        </div>
+    </div>
+    <div class="current-weather__right-col">
+        <div class="current-weather__temp-range">
+            <p class="current-weather__temp-min">
+                <i class="fa fa-lg fa-long-arrow-down" aria-hidden="true"></i>
+                {{ weather.main.temp_min | number: '1.0-0' }}&deg;</p>
+            <p class="current-weather__temp-max">
+                <i class="fa fa-lg fa-long-arrow-up" aria-hidden="true"></i>
+                {{ weather.main.temp_max | number: '1.0-0' }}&deg;</p>
+        </div>
+
+        <div class="current-weather__temp-current">
+            <p class="current-weather__temp">{{ weather.main.temp | number: '1.0-0' }}&deg;</p>
+        </div>
+
+    </div>
 </div>

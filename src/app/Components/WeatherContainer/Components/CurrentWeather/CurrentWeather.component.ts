@@ -7,11 +7,13 @@ import { APP_CONFIG } from "../../../../Models/app_config";
 @Component({
     selector: 'current-weather',
     templateUrl: './CurrentWeather.component.html',
+    styleUrls: ['./CurrentWeather.component.less'],
     providers: [HttpService , /*GoogleAutocompleteService*/]
 })
 
 export class CurrentWeatherComponent implements OnInit  {
     public weather: Weather;
+    public currentDate: Date;
     // public city: string;
 
     // @ViewChild("search")
@@ -20,11 +22,13 @@ export class CurrentWeatherComponent implements OnInit  {
     constructor (
         private httpService: HttpService,
         // private googleAutocompleteService: GoogleAutocompleteService
-    ){ }
+    ){
+        this.currentDate = new Date();
+    }
 
     getWeather() {
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${APP_CONFIG.position.lat}&lon=${APP_CONFIG.position.lng}&appid=${APP_CONFIG.weatherApiId}`;
-        this.httpService.getData(url).subscribe((data:Weather) => this.weather = data );
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${APP_CONFIG.position.lat}&lon=${APP_CONFIG.position.lng}&appid=${APP_CONFIG.weatherApiId}&units=metric`;
+        this.httpService.getData(url).subscribe((data:Weather) => {this.weather = data; console.log(data);} );
     }
 
     ngOnInit(){

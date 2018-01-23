@@ -22,15 +22,14 @@ export class GoogleAutocompleteService {
                 this.ngZone.run(() => {
                     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-                    console.log(place);
-
                     if(place.geometry !== undefined || place.geometry !== null) {
-                        console.log(searchElement.nativeElement);
-                        searchElement.nativeElement.value = place.formatted_address;
+
                         APP_CONFIG.position = {
                             lat: place.geometry.location.lat(),
                             lng: place.geometry.location.lng()
                         };
+                        console.log(place);
+                        APP_CONFIG.city = place.formatted_address;
                     } else {
                         return
                     }

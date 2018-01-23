@@ -1,14 +1,11 @@
-<div class="panel">
-    <label style="width: 50%">
-        <!--Enter city name <input type="text" [(ngModel)]="city"><br>-->
-        <input placeholder="Find your city"
-               autocorrect="off"
-               autocapitalize="off"
-               spellcheck="off"
-               type="text"
-               class="form-control"
-               [(ngModel)]="city"
-               #search>
-    </label>
-    <button class="btn btn-primary" (click)="cityChange(city)">OK</button>
+<div class="city-search">
+    <input placeholder="Find your city..."
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="off"
+           type="text"
+           class="form-control city-search__input"
+           #search
+           value="{{city}}">
+    <button class="btn btn-primary city-search__btn" (click)="cityChange(true)">OK</button>
 </div>

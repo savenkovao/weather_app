@@ -1,3 +1,12 @@
-<city-search (onCityChanged)="onCityChange($event)"></city-search>
-<current-weather></current-weather>
-<forecast></forecast>
+<div class="weather-app">
+    <div class="weather-container-weather weather-container-weather_position">
+        <div class="weather-container-search">
+            <city-search (onCityChanged)="onCityChange($event)"></city-search>
+        </div>
+        <current-weather></current-weather>
+    </div>
+
+    <div class="forecast-container forecast-container_position">
+        <forecast></forecast>
+    </div>
+</div>

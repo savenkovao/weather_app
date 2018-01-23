@@ -1,3 +1,4 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // плагин минимизации
@@ -34,7 +35,13 @@ module.exports = {
                 test: /\.css$/,
                 include: path.resolve(__dirname,'src/app'),
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.less$/,
+                include: path.resolve(__dirname,'src/app'),
+                loader: 'raw-loader!less-loader'
             }
+
 
         ]
     },
