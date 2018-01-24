@@ -6,7 +6,6 @@ import { APP_CONFIG } from "../Models/app_config";
 
 @Injectable()
 export class GoogleAutocompleteService {
-
     constructor (
         private mapsAPILoader: MapsAPILoader,
         private ngZone: NgZone
@@ -23,12 +22,11 @@ export class GoogleAutocompleteService {
                     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
                     if(place.geometry !== undefined || place.geometry !== null) {
-
                         APP_CONFIG.position = {
                             lat: place.geometry.location.lat(),
                             lng: place.geometry.location.lng()
                         };
-                        console.log(place);
+
                         APP_CONFIG.city = place.formatted_address;
                     } else {
                         return
@@ -37,4 +35,6 @@ export class GoogleAutocompleteService {
             });
         });
     }
+
+
 }

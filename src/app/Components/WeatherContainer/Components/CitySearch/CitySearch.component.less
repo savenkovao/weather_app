@@ -3,43 +3,73 @@
   align-items: center;
 }
 
-.city-search__input{
-  display: inline-block;
+.city-search__name{
   width: 100%;
-  background-color: transparent;
-  border: none;
   height: 30px;
   font-size: 30px;
   line-height: 30px;
   color: #fff;
+  padding: 0 0 0 20px;
+  text-transform: uppercase;
+  transition: .2s;
+  opacity: 1;
+}
+
+.city-search__input{
+  display: none;
+  border: none;
+  height: 30px;
   box-shadow: none;
-  padding: 0;
+  padding: 0 0 0 20px;
   text-transform: uppercase;
   transition: .2s;
 
   &::placeholder {
-    color: #fff;
+    color: #939393;
     font-size: 15px;
   }
 
-  &:focus {
+  &.city-search__input_focused {
+    display: inline-block;
     padding: 3px 5px;
     background-color: #fff;
     font-size: 18px;
     line-height: 30px;
     color: #000;
 
-    &~.city-search__btn {
+    &~.city-search__btn-confirm {
       display: block;
       opacity: 1;
+    }
+
+    &~.city-search__btn-search {
+      display: none;
+      opacity: 0;
+    }
+
+    &~.city-search__name {
+      display: none;
+      opacity: 0;
     }
   }
 }
 
-.city-search__btn {
-  display: block;
+
+.city-search__btn-search,
+.city-search__btn-confirm {
+  color: white;
   height: 30px;
-  margin-left: 5px;
-  opacity: 0;
   transition: .2s;
+}
+.city-search__btn-search {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  padding: 2px;
+}
+
+.city-search__btn-confirm{
+  display: none;
+  opacity: 0;
+  margin-left: 5px;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Input, Output } from '@angular/core';
 import { GoogleAutocompleteService } from "../../../../Services/GoogleAutocomplete.service";
 import { APP_CONFIG } from "../../../../Models/app_config";
+import {Weather} from "../../../../Models/weather";
 
 @Component({
     selector: 'city-search',
@@ -11,6 +12,7 @@ import { APP_CONFIG } from "../../../../Models/app_config";
 
 export class CitySearchComponent implements OnInit {
     public city: string;
+    public inputFocus: boolean = false;
 
     @ViewChild("search")
     public searchElement: ElementRef;
@@ -20,9 +22,24 @@ export class CitySearchComponent implements OnInit {
         this.onCityChanged.emit(change);
     }
 
+    @Input() weather: Weather;
+
     constructor (
         private googleAutocompleteService: GoogleAutocompleteService
     ){ }
+
+    inputToggle() {
+        this.inputFocus = !this.inputFocus;
+    }
+
+    searchConfirm(change: boolean) {
+        this.cityChange(true);
+        this.inputToggle();
+    }
+
+    searchEnable() {
+        this.inputToggle();
+    }
 
     ngOnInit() {
         if (navigator.geolocation) {

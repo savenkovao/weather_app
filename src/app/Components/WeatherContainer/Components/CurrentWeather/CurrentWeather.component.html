@@ -1,14 +1,27 @@
 <div class="current-weather">
 
     <div class="current-weather__left-col">
-        <p class="current-weather__week-day">{{ currentDate | date: 'EEEE' }}</p>
+        <p class="current-weather__week-day">
+            {{ currentDate | date: 'EEEE' }}
+        </p>
         <p class="current-weather__date">{{ currentDate | date: 'M/d/yy'}}</p>
         <p class="current-weather__wind">
-            Wind {{ weather.wind.speed | number: '1.0-1' }}km/h
+            Wind
+            <span *ngIf="weather;else unset">
+                {{ weather.wind.speed | number: '1.0-1' }}km/h
+            </span>
+            <ng-template #unset>
+                <span>-</span>
+            </ng-template>
         </p>
         <p class="current-weather__humid">
             <i class="fa fa-tint fa-lg" aria-hidden="true"></i>
-            {{ weather.main.humidity | number: '1.0-1' }}%
+            <span *ngIf="weather;else unset">
+                {{ weather.main.humidity | number: '1.0-1' }}%
+            </span>
+            <ng-template #unset>
+                <span>-</span>
+            </ng-template>
         </p>
     </div>
 
@@ -19,23 +32,47 @@
             <img src="http://openweathermap.org/img/w/10d.png" alt="">
         </div>
         <div class="current-weather__weather-descr">
-            <span *ngFor="let weather of weather.weather" >
-                {{ weather.description }}
-            </span>
+            <p *ngIf="weather;else unset">
+                <span *ngFor="let weather of weather.weather" >
+                    {{ weather.description }}
+                </span>
+            </p>
+            <ng-template #unset>
+                <span>-</span>
+            </ng-template>
         </div>
     </div>
     <div class="current-weather__right-col">
         <div class="current-weather__temp-range">
             <p class="current-weather__temp-min">
                 <i class="fa fa-lg fa-long-arrow-down" aria-hidden="true"></i>
-                {{ weather.main.temp_min | number: '1.0-0' }}&deg;</p>
+                <span *ngIf="weather;else unset">
+                    {{ weather.main.temp_min | number: '1.0-0' }}&deg;
+                </span>
+                <ng-template #unset>
+                    <span>-</span>
+                </ng-template>
+            </p>
             <p class="current-weather__temp-max">
                 <i class="fa fa-lg fa-long-arrow-up" aria-hidden="true"></i>
-                {{ weather.main.temp_max | number: '1.0-0' }}&deg;</p>
+                <span *ngIf="weather;else unset">
+                    {{ weather.main.temp_max | number: '1.0-0' }}&deg;
+                </span>
+                <ng-template #unset>
+                    <span>-</span>
+                </ng-template>
+            </p>
         </div>
 
         <div class="current-weather__temp-current">
-            <p class="current-weather__temp">{{ weather.main.temp | number: '1.0-0' }}&deg;</p>
+            <p class="current-weather__temp">
+                <span *ngIf="weather;else unset">
+                    {{ weather.main.temp | number: '1.0-0' }}&deg;
+                </span>
+                <ng-template #unset>
+                    <span>-</span>
+                </ng-template>
+            </p>
         </div>
 
     </div>

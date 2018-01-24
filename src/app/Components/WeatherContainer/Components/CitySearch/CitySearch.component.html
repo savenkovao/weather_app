@@ -1,4 +1,5 @@
 <div class="city-search">
+
     <input placeholder="Find your city..."
            autocorrect="off"
            autocapitalize="off"
@@ -6,6 +7,15 @@
            type="text"
            class="form-control city-search__input"
            #search
-           value="{{city}}">
-    <button class="btn btn-primary city-search__btn" (click)="cityChange(true)">OK</button>
+           value="{{ city }}"
+           [ngClass]="{'city-search__input_focused': inputFocus}">
+
+    <p class="city-search__name">
+        {{ weather.name }}
+    </p>
+
+    <button class="btn btn-link city-search__btn-search" (click)="searchEnable()">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn-primary city-search__btn-confirm" (click)="searchConfirm(true)">OK</button>
 </div>
