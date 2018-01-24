@@ -27,13 +27,11 @@
 
     <div class="current-weather__center-col">
         <div class="current-weather__weather-icon">
-            <!--{{ weather.icon }}-->
-            <!--<i class="wi wi-night-sleet"></i>-->
-            <img src="http://openweathermap.org/img/w/10d.png" alt="">
+            <img [src]="weatherIcon" alt="Weather icon" *ngFor="let weatherIcon of weatherIcons">
         </div>
         <div class="current-weather__weather-descr">
             <p *ngIf="weather;else unset">
-                <span *ngFor="let weather of weather.weather" >
+                <span *ngFor="let weather of weather.weather">
                     {{ weather.description }}
                 </span>
             </p>

@@ -1,7 +1,7 @@
 export class Weather {
     coord:    object;
     sys:      object;
-    weather:  object;
+    weather:  Array<any>;
     main:     object;
     wind:     object;
     rain:     object;

@@ -26,7 +26,9 @@ export class CitySearchComponent implements OnInit {
 
     constructor (
         private googleAutocompleteService: GoogleAutocompleteService
-    ){ }
+    ){
+        // this.city = APP_CONFIG.city;
+    }
 
     inputToggle() {
         this.inputFocus = !this.inputFocus;
@@ -45,6 +47,7 @@ export class CitySearchComponent implements OnInit {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position)=> {
+                    console.log(position)
                     APP_CONFIG.position = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude

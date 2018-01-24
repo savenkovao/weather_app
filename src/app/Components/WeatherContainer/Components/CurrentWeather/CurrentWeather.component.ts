@@ -1,7 +1,6 @@
-import {Component, OnInit, Output, ElementRef, ViewChild, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { HttpService } from '../../../../Services/Http.service';
 import { Weather } from '../../../../Models/weather';
-// import { GoogleAutocompleteService } from "../../../../Services/GoogleAutocomplete.service";
 import { APP_CONFIG } from "../../../../Models/app_config";
 
 @Component({
@@ -14,6 +13,7 @@ import { APP_CONFIG } from "../../../../Models/app_config";
 export class CurrentWeatherComponent implements OnInit  {
     public weather: Weather;
     public currentDate: Date;
+    public weatherIcons: Array<string>;
 
     @Output() onWeatherChanged = new EventEmitter<Weather>();
     weatherChange(data:Weather){
@@ -32,9 +32,19 @@ export class CurrentWeatherComponent implements OnInit  {
             (data:Weather) => {
                 this.weather = data;
                 this.weatherChange(data);
-                console.log(data);
+                this.weatherIcons = [];
+
+                data.weather.forEach((item, i, arr) => {
+                    let url = `http://openweathermap.org/img/w/${item.icon}.png`;
+                    this.weatherIcons.push(url);
+                });
+
+                window.localStorage.APP_CONFIG_lat = APP_CONFIG.position.lat;
+                window.localStorage.APP_CONFIG_lng = APP_CONFIG.position.lng;
+                window.localStorage.APP_CONFIG_city = APP_CONFIG.city;
             });
     }
 
-    ngOnInit(){}
+    ngOnInit(){
+    }
 }

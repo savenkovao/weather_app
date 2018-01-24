@@ -7,11 +7,12 @@ p {
 }
 
 .current-weather__left-col {
-  width: 25%;
+  width: 30%;
+  padding-left: 10px;
 }
 .current-weather__center-col {
   padding: 0 10px;
-  width: 40%;
+  width: 35%;
 }
 .current-weather__right-col {
   display: flex;
@@ -45,8 +46,17 @@ p {
   line-height: 1.1;
 }
 .current-weather__weather-icon {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+
   img {
-    width: 100%;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    margin: 0 10px;
   }
 }
 .current-weather__weather-descr {
