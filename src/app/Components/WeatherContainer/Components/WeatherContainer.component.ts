@@ -25,7 +25,6 @@ export class WeatherContainerComponent implements OnInit  {
 
     onWeatherChange(weather: Weather) {
         this.weather = weather;
-        console.log(weather, 'dsds');
     }
 
     update(){

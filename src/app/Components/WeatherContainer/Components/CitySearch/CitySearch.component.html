@@ -7,14 +7,11 @@
            type="text"
            class="form-control city-search__input"
            #search
-           value="{{ city }}"
+           [(ngModel)]="city"
            [ngClass]="{'city-search__input_focused': inputFocus}">
-    <p class="city-search__name" *ngIf="weather;else unset">
+    <p class="city-search__name" *ngIf="city;else unset">
         {{ city }}
     </p>
-    <ng-template #unset>
-        {{''}}
-    </ng-template>
 
     <button class="btn btn-link city-search__btn-search" (click)="searchEnable()">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

@@ -27,7 +27,7 @@ export class CitySearchComponent implements OnInit {
     constructor (
         private googleAutocompleteService: GoogleAutocompleteService
     ){
-        // this.city = APP_CONFIG.city;
+        this.city = APP_CONFIG.city;
     }
 
     inputToggle() {

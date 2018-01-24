@@ -10,7 +10,6 @@ import { AgmCoreModule, MapsAPILoader } from "@agm/core";
 import { ForecastComponent } from "./Components/WeatherContainer/Components/Forecast/Forecast.component";
 import {WeatherContainerComponent} from "./Components/WeatherContainer/Components/WeatherContainer.component";
 import {CitySearchComponent} from "./Components/WeatherContainer/Components/CitySearch/CitySearch.component";
-
 @NgModule({
     imports:      [
         AgmCoreModule.forRoot({
