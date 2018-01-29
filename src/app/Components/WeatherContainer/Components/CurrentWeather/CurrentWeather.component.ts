@@ -38,12 +38,9 @@ export class CurrentWeatherComponent implements OnInit  {
                     let url = `http://openweathermap.org/img/w/${item.icon}.png`;
                     this.weatherIcons.push(url);
                 });
-
-                window.localStorage.APP_CONFIG_lat = APP_CONFIG.position.lat;
-                window.localStorage.APP_CONFIG_lng = APP_CONFIG.position.lng;
-                window.localStorage.APP_CONFIG_city = APP_CONFIG.city;
             });
     }
+
 
     ngOnInit(){
     }

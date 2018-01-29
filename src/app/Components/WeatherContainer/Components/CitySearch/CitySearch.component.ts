@@ -44,32 +44,6 @@ export class CitySearchComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position)=> {
-                    console.log(position)
-                    APP_CONFIG.position = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    setTimeout(()=>{
-                        this.cityChange(true);
-                    },10);
-
-                }, ()=> {
-                    setTimeout(()=>{
-                        this.cityChange(true);
-                    },10);
-                    console.log('Geoposition not found');
-                });
-        } else {
-            setTimeout(()=>{
-                this.cityChange(true);
-            },10);
-            console.log("Browser doesn't support Geolocation");
-        }
-
         this.googleAutocompleteService.init(this.searchElement);
     }
 }

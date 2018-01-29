@@ -1,4 +1,5 @@
 export class Forecast {
+    list: Array<any>
     // coord:    object;
     // sys:      object;
     // weather:  object;

@@ -18,7 +18,14 @@ export class ForecastComponent implements OnInit {
 
     getForecast(){
         let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${APP_CONFIG.position.lat}&lon=${APP_CONFIG.position.lng}&appid=${APP_CONFIG.weatherApiId}&units=metric`;
-        this.httpService.getData(url).subscribe((data:Forecast) => {/*this.forecast = data*/ console.log(data)} );
+        this.httpService.getData(url).subscribe((data:Forecast) => {
+            /*this.forecast = data*/
+            console.log(data);
+
+            for (let num of data.list) {
+                console.log(num);
+            }
+        } );
     }
 
     ngOnInit() {
